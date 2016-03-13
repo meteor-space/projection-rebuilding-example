@@ -1,7 +1,7 @@
 import { AccountTransactions } from '../infrastructure/collections.js';
 import AccountPublications from './publications/account-publications.js';
 
-export default Space.Application.extend('BankApplication', {
+const ServerApp = Space.Application.extend('BankApplication', {
 
   requiredModules: [
     'Space.messaging'
@@ -20,3 +20,5 @@ export default Space.Application.extend('BankApplication', {
   }
 
 });
+
+export default new ServerApp();

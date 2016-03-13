@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Layout = ({content}) => (
+export default Layout = ({content}) => (
   <div>
     <h1>Space Bank</h1>
     <hr />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const AccountTransactionsList = ({transactions}) => (
+export default AccountTransactionsList = ({transactions}) => (
   <div>
     <ul>
       {transactions.map(({_id, amount}) => (
