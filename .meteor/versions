@@ -13,6 +13,7 @@ caching-html-compiler@1.0.3-beta.11
 callback-hook@1.0.5-beta.11
 check@1.1.1-beta.11
 coffeescript@1.0.12-beta.11
+cosmos:browserify@0.9.4
 ddp@1.2.2
 ddp-client@1.2.2-beta.11
 ddp-common@1.2.2
@@ -32,6 +33,7 @@ htmljs@1.0.6-beta.11
 http@1.1.2-beta.11
 id-map@1.0.4
 jquery@1.11.5-beta.11
+kadira:flow-router@2.10.1
 launch-screen@1.0.6-beta.11
 livedata@1.0.15
 logging@1.0.9-beta.11
