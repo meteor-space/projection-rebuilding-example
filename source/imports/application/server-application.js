@@ -8,11 +8,11 @@ const ServerApp = Space.Application.extend('BankApplication', {
   ],
 
   singletons: [
-    'AccountPublications'
+    AccountPublications
   ],
 
   onInitialize() {
-    this.injector.map('AccountTransactions').to(AccountTransactions)
+    this.injector.map('AccountTransactions').to(AccountTransactions);
   },
 
   onReset() {
