@@ -3,13 +3,14 @@ const initialState = {
 }
 
 export default bankers = (state = initialState, action) => {
-  let bankersCount = state.bankersCount;
   switch (action.type) {
     case 'ADD_BANKER':
-      bankersCount++;
-      break;
+      return { ...state, bankersCount: state.bankersCount + 1 };
     case 'REMOVE_BANKER':
-      if (bankersCount > 0) bankersCount--;
+      if (state.bankersCount > 0) {
+        return { ...state, bankersCount: state.bankersCount - 1 }
+      }
+    default:
+      return state;
   }
-  return Object.assign({}, state, { bankersCount: bankersCount });
 }
