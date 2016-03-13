@@ -1,7 +1,13 @@
+import React from 'react';
+
 export default Space.Application.extend('Application', {
 
-  configuration: {
-    appId: 'ProjectionRebuildingExampleApplication'
+  requiredModules: [
+    'Space.messaging'
+  ],
+
+  onInitialize() {
+    this.injector.map('React').to(React)
   }
 
 });
