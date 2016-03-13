@@ -1,5 +1,5 @@
 import {composeWithTracker} from 'react-komposer';
-import AccountTransactions from '../components/account-transactions-list.jsx';
+import AccountTransactions from '../containers/account-transactions-list';
 
 function composer(props, onData) {
   const handle = Meteor.subscribe('account_transactions');
