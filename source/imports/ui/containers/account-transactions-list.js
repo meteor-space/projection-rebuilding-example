@@ -7,7 +7,7 @@ function composer(props, onData) {
   if(handle.ready()) {
     const transactions = AccountTransactions.find({}, {sort: {_id: 1}}).fetch();
     onData(null, {transactions});
-  };
-};
+  }
+}
 
 export default composeWithTracker(composer)(AccountTransactionsList);
