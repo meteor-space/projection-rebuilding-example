@@ -4,6 +4,10 @@
   "description": "A demo application showcasing Meteor Space projection rebuilding for event-sourced systems",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test-app --driver-package practicalmeteor:mocha"
+  },
   "dependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7",

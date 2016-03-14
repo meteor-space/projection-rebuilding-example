@@ -1,2 +1,3 @@
-import App from '/source/imports/application/server-application.js'
-App.start();
+import ServerApp from '/source/imports/application/server-application.js'
+
+ServerApp.start();

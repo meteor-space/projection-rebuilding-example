@@ -21,3 +21,12 @@ space:base
 space:ui
 space:messaging
 kadira:flow-router
+space:event-sourcing
+space:vo-monetary
+space:vo-user
+space:testing
+space:testing-messaging
+space:testing-event-sourcing
+practicalmeteor:munit
+avital:mocha
+practicalmeteor:chai
