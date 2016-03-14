@@ -1,7 +1,7 @@
 import Contact from '../value-objects/contact';
 
-const OpenAccountCommand = Space.domain.Command.extend('OpenAccountCommand', {
+const OpenBankAccount = Space.domain.Command.extend('OpenBankAccount', {
   owner: Contact
 });
 
-export default OpenAccountCommand;
+export default OpenBankAccount;
