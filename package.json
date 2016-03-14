@@ -1,0 +1,15 @@
+{
+  "name": "projection-rebuilding-example",
+  "version": "0.1.0",
+  "description": "A demo application showcasing Meteor Space projection rebuilding for event-sourced systems",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-komposer": "^1.3.3",
+    "react-mounter": "^1.1.0",
+    "react-redux": "^4.4.1",
+    "redux": "^3.3.1"
+  }
+}
