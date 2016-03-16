@@ -5,7 +5,7 @@ const Contact = Space.domain.ValueObject.extend('Contact', {
     return {
       name: String,
       email: EmailAddress,
-      nationalIdentificationNumber: NIN
+      nin: NIN
     };
   }
 });

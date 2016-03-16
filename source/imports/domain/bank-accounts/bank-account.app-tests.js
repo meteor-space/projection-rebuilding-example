@@ -1,13 +1,9 @@
-// import { Meteor } from 'meteor/meteor';
-import { mocha } from 'meteor/avital:mocha';
-// import { chai, assert } from "meteor/practicalmeteor:chai";
 import BankingDomain from '../banking-domain-module';
 import BankAccount from './bank-account';
 import OpenBankAccount from '../../domain-commands/open-bank-account';
 import BankAccountOpened from '../../domain-events/bank-account-opened';
 import Contact from '../../value-objects/contact';
 import NIN from '../../value-objects/nin';
-
 
 describe('BankAccount', function() {
 
@@ -19,7 +15,10 @@ describe('BankAccount', function() {
       owner: new Contact({
         name: 'Name Surname',
         email: new EmailAddress('user@server.com'),
-        nin: new NIN('21212121212')
+        nin: new NIN({
+          nin: '11111',
+          countryCode: 'HR'
+        })
       })
     };
 
@@ -31,16 +30,20 @@ describe('BankAccount', function() {
       BankingDomain.test(BankAccount)
         .given()
         .when(
-          new OpenBankAccount(Object.assign({}, this.newBankData, {
-            targetId: this.bankAccountId
-          }))
+          new OpenBankAccount({
+            targetId: this.bankAccountId,
+            owner: this.newBankData.owner
+          })
         )
         .expect([
-          new BankAccountOpened(Object.assign({}, this.newBankData, {
-            sourceId: this.bankAccountId
-          }))
+          new BankAccountOpened({
+            sourceId: this.bankAccountId,
+            owner: this.newBankData.owner,
+            balance: new Money(0)
+          })
         ]);
     });
   });
 
 });
+

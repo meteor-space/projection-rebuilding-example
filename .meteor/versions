@@ -71,7 +71,7 @@ session@1.1.2-beta.12
 space:base@4.1.2
 space:domain@0.2.1
 space:event-sourcing@3.0.1
-space:messaging@3.1.1
+space:messaging@3.2.0
 space:testing@3.0.2
 space:testing-event-sourcing@3.1.0
 space:testing-messaging@3.0.1

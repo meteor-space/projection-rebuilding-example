@@ -1,0 +1,10 @@
+{
+  "space:messaging": {
+    "git":"https://github.com/meteor-space/messaging.git",
+    "version": "028432b8acfe88159c49b17fc4fb7daacab513e3"
+  },
+  "space:event-sourcing": {
+    "git":"https://github.com/meteor-space/event-sourcing.git",
+    "version": "dee18c7acfc4c3dbb3b651f1385f285704158ecc"
+  }
+}

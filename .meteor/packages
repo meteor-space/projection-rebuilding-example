@@ -27,6 +27,5 @@ space:vo-user
 space:testing
 space:testing-messaging
 space:testing-event-sourcing
-practicalmeteor:munit
 avital:mocha
 practicalmeteor:chai
