@@ -1,5 +1,5 @@
 import BankAccount from '../domain/bank-accounts/bank-account';
-import OpenBankAccount from '../domain-commands/open-bank-account';
+import { OpenBankAccount, CloseBankAccount } from '../domain-commands/commands';
 
 const BankAccountRouter = Space.eventSourcing.Router.extend('BankAccountRouter', {
 
@@ -7,6 +7,7 @@ const BankAccountRouter = Space.eventSourcing.Router.extend('BankAccountRouter',
   initializingMessage: OpenBankAccount,
 
   routeCommands: [
+    this.CloseBankAccount
   ]
 
 });

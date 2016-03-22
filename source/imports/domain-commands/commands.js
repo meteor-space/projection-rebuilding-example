@@ -4,7 +4,10 @@ const commands = Space.messaging.define(Space.domain.Command,  {
 
   OpenBankAccount: {
     owner: Contact
+  },
+
+  CloseBankAccount: {
   }
 });
 
-export default commands.OpenBankAccount;
+export default commands;

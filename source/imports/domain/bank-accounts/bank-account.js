@@ -1,5 +1,6 @@
 import Contact from '../../value-objects/contact';
-import BankAccountOpened from '../../domain-events/bank-account-opened';
+import { OpenBankAccount } from '../../domain-commands/commands';
+import BankAccountOpened from '../../domain-events/events';
 import _ from 'lodash';
 
 const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
