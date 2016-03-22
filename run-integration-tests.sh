@@ -1,0 +1,1 @@
+meteor test --full-app --driver-package vital:mocha
