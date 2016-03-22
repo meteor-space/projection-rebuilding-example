@@ -22,10 +22,11 @@ space:ui
 space:messaging
 kadira:flow-router
 space:event-sourcing
+space:domain
 space:vo-monetary
 space:vo-user
 space:testing
 space:testing-messaging
 space:testing-event-sourcing
-avital:mocha
+practicalmeteor:mocha@2.1.1-rc.1
 practicalmeteor:chai

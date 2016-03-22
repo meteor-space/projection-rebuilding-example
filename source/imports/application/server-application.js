@@ -1,6 +1,6 @@
 import { AccountTransactions } from '../infrastructure/collections.js';
 import AccountPublications from './publications/account-publications.js';
-import BankingDomain from '../domain/banking-domain-module';
+import BankAccountRouter from '../infrastructure/bank-account-router';
 
 const ServerApp = Space.Application.extend('BankApplication', {
 
@@ -10,11 +10,12 @@ const ServerApp = Space.Application.extend('BankApplication', {
 
   requiredModules: [
     'Space.messaging',
-    BankingDomain
+    'Space.eventSourcing'
   ],
 
   singletons: [
-    AccountPublications
+    AccountPublications,
+    BankAccountRouter
   ],
 
   onInitialize() {

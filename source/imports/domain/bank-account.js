@@ -1,10 +1,8 @@
-import Contact from '../../value-objects/contact';
-import { OpenBankAccount } from '../../domain-commands/commands';
-import BankAccountOpened from '../../domain-events/events';
-import _ from 'lodash';
+import Contact from './value-objects/contact';
+import events from './events';
 
 const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
-  
+
   fields: {
     balance: Money,
     owner: Contact
@@ -25,11 +23,10 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
   // ============= COMMAND HANDLERS =============
 
   _openBankAccount(command) {
-
-    const event = new BankAccountOpened(_.extend(this._eventPropsFromCommand(command), {
+    this.record(new events.BankAccountOpened({
+      ...this._eventPropsFromCommand(command),
       balance: new Money(0)
     }));
-    this.record(event);
   },
 
   // ============= EVENT HANDLERS ============
@@ -37,7 +34,7 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
   _onBankAccountOpened(event) {
     this._assignFields(event);
   }
-  
+
 });
 
 BankAccount.registerSnapshotType('BankAccountSnapshot');
