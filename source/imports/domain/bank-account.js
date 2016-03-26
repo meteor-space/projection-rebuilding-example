@@ -1,12 +1,14 @@
 import Contact from './value-objects/contact';
 import events from './events';
+import BankAccountOverdrawn from '../application/domain-exceptions/domain-exceptions';
 
 const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 
   fields: {
     balance: Money,
     owner: Contact,
-    overdraft: Money
+    overdraft: Money,
+    currency: Currency
   },
 
   commandMap() {
@@ -40,6 +42,11 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
   },
 
   _debitBankAccount(command) {
+
+    if ((this.balance.amount - command.amount.amount) <= (-this.overdraft.amount)) {
+      throw new BankAccountOverdrawn(this.getId().toString());
+    }
+
     this.record(new events.BankAccountDebited({
       ...this._eventPropsFromCommand(command)
     }));

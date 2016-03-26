@@ -4,6 +4,7 @@ import events from '/source/imports/domain/events';
 import Contact from '/source/imports/domain/value-objects/contact';
 import NIN from '/source/imports/domain/value-objects/nin';
 import ServerApp from '/source/imports/application/server-application.js';
+import BankAccountOverdrawn from '/source/imports/application/domain-exceptions/domain-exceptions';
 import _ from 'lodash';
 
 describe('BankAccount', function () {
@@ -22,7 +23,8 @@ describe('BankAccount', function () {
         })
       }),
       initialBalance: new Money(0, new Currency('EUR')),
-      overdraft: new Money(10000, new Currency('EUR'))
+      overdraft: new Money(10000, new Currency('EUR')),
+      currency: new Currency('EUR')
     };
 
   });
@@ -92,6 +94,31 @@ describe('BankAccount', function () {
           new events.BankAccountDebited({
             sourceId: this.bankAccountId,
             amount: new Money(5, 'EUR')
+          })
+        ]);
+    });
+  });
+
+  describe('debiting a bank account is not possible if account would be overdrawn', function() {
+
+    it('generates a bank account overdrawn exception', function() {
+
+      Space.Application.test(BankAccount, ServerApp)
+        .given([
+          new commands.OpenBankAccount(_.extend({}, this.newBankAccountData, {
+            targetId: this.bankAccountId
+          }))
+        ])
+        .when(
+          new commands.DebitBankAccount({
+            targetId: this.bankAccountId,
+            amount: new Money(500000, 'EUR')
+          })
+        )
+        .expect([
+          new BankAccountOverdrawn({
+            thrower: BankAccount,
+            error: new BankAccountOverdrawn(this.bankAccountId.toString())
           })
         ]);
     });
