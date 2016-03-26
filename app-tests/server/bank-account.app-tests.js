@@ -33,14 +33,42 @@ describe('BankAccount', function() {
         .when(
           new commands.OpenBankAccount({
             targetId: this.bankAccountId,
-            owner: this.newBankData.owner
+            owner: this.newBankData.owner,
+            initialBalance: new Money(0, 'EUR')
           })
         )
         .expect([
           new events.BankAccountOpened({
             sourceId: this.bankAccountId,
             owner: this.newBankData.owner,
-            balance: new Money(0)
+            initialBalance: new Money(0, 'EUR')
+          })
+        ]);
+    });
+  });
+
+  describe('crediting a bank account', function() {
+
+    it('publishes bank account credited event', function() {
+
+      Space.Application.test(BankAccount, ServerApp)
+        .given([
+          new commands.OpenBankAccount({
+            targetId: this.bankAccountId,
+            owner: this.newBankData.owner,
+            initialBalance: new Money(0, 'EUR')
+          })
+        ])
+        .when(
+          new commands.CreditBankAccount({
+            targetId: this.bankAccountId,
+            amount: new Money(10, 'EUR')
+          })
+        )
+        .expect([
+          new events.BankAccountCredited({
+            sourceId: this.bankAccountId,
+            amount: new Money(10, 'EUR')
           })
         ]);
     });

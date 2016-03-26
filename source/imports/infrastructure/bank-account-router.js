@@ -7,7 +7,7 @@ const BankAccountRouter = Space.eventSourcing.Router.extend('BankAccountRouter',
   initializingMessage: commands.OpenBankAccount,
 
   routeCommands: [
-    commands.CloseBankAccount
+    commands.CreditBankAccount
   ]
 
 });
