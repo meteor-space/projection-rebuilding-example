@@ -1,7 +1,7 @@
 const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccountProjection', {
 
   collections: {
-    transactions: 'AccountTransactions'
+    accounts: 'BankAccounts'
   },
 
   eventSubscriptions() {
@@ -13,7 +13,7 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
   },
 
   _onBankAccountOpened(event) {
-    this.transactions.insert({
+    this.accounts.insert({
       _id: event.sourceId.toString(),
       owner: event.owner.toData(),
       balance: event.initialBalance.toData()
@@ -21,7 +21,7 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
   },
 
   _onBankAccountCredited(event) {
-    this.transactions.update(event.sourceId.toString(), {
+    this.accounts.update(event.sourceId.toString(), {
       $inc: {
         'balance.amount': event.amount.amount
       }
@@ -29,7 +29,7 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
   },
 
   _onBankAccountDebited(event) {
-    this.transactions.update(event.sourceId.toString(), {
+    this.accounts.update(event.sourceId.toString(), {
       $inc: {
         'balance.amount': - event.amount.amount
       }

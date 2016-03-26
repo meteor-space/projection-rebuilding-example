@@ -1,7 +1,7 @@
 export default Space.messaging.Publication.extend('AccountPublications', {
 
   dependencies: {
-    accountTransactions: 'AccountTransactions'
+    accountTransactions: 'BankAccountTransactions'
   },
 
   publications() {
