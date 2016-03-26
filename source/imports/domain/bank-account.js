@@ -5,7 +5,8 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 
   fields: {
     balance: Money,
-    owner: Contact
+    owner: Contact,
+    overdraft: Money
   },
 
   commandMap() {

@@ -4,7 +4,8 @@ export default Space.messaging.define(Space.domain.Event,  {
 
   BankAccountOpened: {
     owner: Contact,
-    initialBalance: Money
+    initialBalance: Money,
+    overdraft: Money
   },
 
   BankAccountCredited: {

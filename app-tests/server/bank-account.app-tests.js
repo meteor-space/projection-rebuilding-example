@@ -4,14 +4,15 @@ import events from '/source/imports/domain/events';
 import Contact from '/source/imports/domain/value-objects/contact';
 import NIN from '/source/imports/domain/value-objects/nin';
 import ServerApp from '/source/imports/application/server-application.js';
+import _ from 'lodash';
 
-describe('BankAccount', function() {
+describe('BankAccount', function () {
 
-  beforeEach(function() {
+  beforeEach(function () {
 
     this.bankAccountId = new Guid();
 
-    this.newBankData = {
+    this.newBankAccountData = {
       owner: new Contact({
         name: 'Name Surname',
         email: new EmailAddress('user@server.com'),
@@ -19,32 +20,31 @@ describe('BankAccount', function() {
           nin: '11111',
           countryCode: 'HR'
         })
-      })
+      }),
+      initialBalance: new Money(0, new Currency('EUR')),
+      overdraft: new Money(10000, new Currency('EUR'))
     };
 
   });
 
-  describe('opening a bank account', function() {
+  describe('opening a bank account', function () {
 
-    it('publishes bank account opened event', function() {
+    it('publishes bank account opened event', function () {
 
       Space.Application.test(BankAccount, ServerApp)
         .given()
         .when(
-          new commands.OpenBankAccount({
-            targetId: this.bankAccountId,
-            owner: this.newBankData.owner,
-            initialBalance: new Money(0, 'EUR')
-          })
+          new commands.OpenBankAccount(_.extend({}, this.newBankAccountData, {
+            targetId: this.bankAccountId
+          }))
         )
         .expect([
-          new events.BankAccountOpened({
-            sourceId: this.bankAccountId,
-            owner: this.newBankData.owner,
-            initialBalance: new Money(0, 'EUR')
-          })
+          new events.BankAccountOpened(_.extend({}, this.newBankAccountData, {
+            sourceId: this.bankAccountId
+          }))
         ]);
     });
+
   });
 
   describe('crediting a bank account', function() {
@@ -53,11 +53,9 @@ describe('BankAccount', function() {
 
       Space.Application.test(BankAccount, ServerApp)
         .given([
-          new commands.OpenBankAccount({
-            targetId: this.bankAccountId,
-            owner: this.newBankData.owner,
-            initialBalance: new Money(0, 'EUR')
-          })
+          new commands.OpenBankAccount(_.extend({}, this.newBankAccountData, {
+            targetId: this.bankAccountId
+          }))
         ])
         .when(
           new commands.CreditBankAccount({
@@ -80,11 +78,9 @@ describe('BankAccount', function() {
 
       Space.Application.test(BankAccount, ServerApp)
         .given([
-          new commands.OpenBankAccount({
-            targetId: this.bankAccountId,
-            owner: this.newBankData.owner,
-            initialBalance: new Money(10, 'EUR')
-          })
+          new commands.OpenBankAccount(_.extend({}, this.newBankAccountData, {
+            targetId: this.bankAccountId
+          }))
         ])
         .when(
           new commands.DebitBankAccount({
