@@ -1,3 +1,3 @@
-const AccountTransactions = new Mongo.Collection('account_transactions');
+import {Mongo} from 'meteor/mongo';
 
-export { AccountTransactions }
+export const AccountTransactions = new Mongo.Collection('account_transactions');
