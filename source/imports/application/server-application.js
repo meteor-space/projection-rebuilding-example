@@ -26,7 +26,7 @@ const ServerApp = Space.Application.extend('BankApplication', {
 
   onInitialize() {
     this.injector.map('BankAccountTransactions').to(Collections.BankAccountTransactions);
-    this.injector.map('BankAccounts').to(Collections.BankAccountTransactions);
+    this.injector.map('BankAccounts').to(Collections.BankAccounts);
   },
 
   onReset() {
