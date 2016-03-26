@@ -4,7 +4,10 @@ import events from '/source/imports/domain/events';
 import Contact from '/source/imports/domain/value-objects/contact';
 import NIN from '/source/imports/domain/value-objects/nin';
 import ServerApp from '/source/imports/application/server-application.js';
+import DomainException from '/source/imports/application/domain-exceptions/domain-exceptions';
 import BankAccountOverdrawn from '/source/imports/application/domain-exceptions/domain-exceptions';
+import DebitingBankAccountIsNotPossibleWithWrongCurrency from '/source/imports/application/domain-exceptions/domain-exceptions';
+import CreditingBankAccountIsNotPossibleWithWrongCurrency from '/source/imports/application/domain-exceptions/domain-exceptions';
 import _ from 'lodash';
 
 describe('BankAccount', function () {
@@ -62,13 +65,38 @@ describe('BankAccount', function () {
         .when(
           new commands.CreditBankAccount({
             targetId: this.bankAccountId,
-            amount: new Money(10, 'EUR')
+            amount: new Money(10, new Currency('EUR'))
           })
         )
         .expect([
           new events.BankAccountCredited({
             sourceId: this.bankAccountId,
-            amount: new Money(10, 'EUR')
+            amount: new Money(10, new Currency('EUR'))
+          })
+        ]);
+    });
+  });
+
+  describe('crediting a bank account is not possible with wrong currency', function() {
+
+    it('generates crediting bank account is not possible with wrong currency exception', function() {
+
+      Space.Application.test(BankAccount, ServerApp)
+        .given([
+          new commands.OpenBankAccount(_.extend({}, this.newBankAccountData, {
+            targetId: this.bankAccountId
+          }))
+        ])
+        .when(
+          new commands.CreditBankAccount({
+            targetId: this.bankAccountId,
+            amount: new Money(10, new Currency('HRK'))
+          })
+        )
+        .expect([
+          new DomainException({
+            thrower: BankAccount,
+            error: new CreditingBankAccountIsNotPossibleWithWrongCurrency(this.bankAccountId.toString(), 'HRK')
           })
         ]);
     });
@@ -87,13 +115,38 @@ describe('BankAccount', function () {
         .when(
           new commands.DebitBankAccount({
             targetId: this.bankAccountId,
-            amount: new Money(5, 'EUR')
+            amount: new Money(5, new Currency('EUR'))
           })
         )
         .expect([
           new events.BankAccountDebited({
             sourceId: this.bankAccountId,
-            amount: new Money(5, 'EUR')
+            amount: new Money(5, new Currency('EUR'))
+          })
+        ]);
+    });
+  });
+
+  describe('debiting a bank account is not possible with wrong currency', function() {
+
+    it('generates debiting bank account is not possible with wrong currency exception', function() {
+
+      Space.Application.test(BankAccount, ServerApp)
+        .given([
+          new commands.OpenBankAccount(_.extend({}, this.newBankAccountData, {
+            targetId: this.bankAccountId
+          }))
+        ])
+        .when(
+          new commands.DebitBankAccount({
+            targetId: this.bankAccountId,
+            amount: new Money(10, new Currency('HRK'))
+          })
+        )
+        .expect([
+          new Space.domain.Exception({
+            thrower: BankAccount,
+            error: new DebitingBankAccountIsNotPossibleWithWrongCurrency(this.bankAccountId.toString(), 'HRK')
           })
         ]);
     });
@@ -112,11 +165,11 @@ describe('BankAccount', function () {
         .when(
           new commands.DebitBankAccount({
             targetId: this.bankAccountId,
-            amount: new Money(500000, 'EUR')
+            amount: new Money(500000, new Currency('EUR'))
           })
         )
         .expect([
-          new BankAccountOverdrawn({
+          new Space.domain.Exception({
             thrower: BankAccount,
             error: new BankAccountOverdrawn(this.bankAccountId.toString())
           })

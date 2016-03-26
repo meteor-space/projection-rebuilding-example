@@ -1,6 +1,8 @@
 import Contact from './value-objects/contact';
 import events from './events';
 import BankAccountOverdrawn from '../application/domain-exceptions/domain-exceptions';
+import DebitingBankAccountIsNotPossibleWithWrongCurrency from '../application/domain-exceptions/domain-exceptions';
+import CreditingBankAccountIsNotPossibleWithWrongCurrency from '../application/domain-exceptions/domain-exceptions';
 
 const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 
@@ -36,6 +38,11 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
   },
 
   _creditBankAccount(command) {
+
+    if (!this.currency.equals(command.amount.currency)) {
+      throw new CreditingBankAccountIsNotPossibleWithWrongCurrency(this.getId().toString(), command.amount.currency.toString());
+    }
+
     this.record(new events.BankAccountCredited({
       ...this._eventPropsFromCommand(command)
     }));
@@ -45,6 +52,10 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 
     if ((this.balance.amount - command.amount.amount) <= (-this.overdraft.amount)) {
       throw new BankAccountOverdrawn(this.getId().toString());
+    }
+
+    if (!this.currency.equals(command.amount.currency)) {
+      throw new DebitingBankAccountIsNotPossibleWithWrongCurrency(this.getId().toString(), command.amount.currency.toString());
     }
 
     this.record(new events.BankAccountDebited({
