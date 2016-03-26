@@ -9,6 +9,10 @@ export default Space.messaging.define(Space.domain.Event,  {
 
   BankAccountCredited: {
     amount: Money
+  },
+
+  BankAccountDebited: {
+    amount: Money
   }
 
 });

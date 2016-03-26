@@ -11,14 +11,16 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
   commandMap() {
     return {
       'OpenBankAccount': this._openBankAccount,
-      'CreditBankAccount': this._creditBankAccount
+      'CreditBankAccount': this._creditBankAccount,
+      'DebitBankAccount': this._debitBankAccount
     };
   },
 
   eventMap() {
     return {
       'BankAccountOpened': this._onBankAccountOpened,
-      'BankAccountCredited': this._onBankAccountCredited
+      'BankAccountCredited': this._onBankAccountCredited,
+      'BankAccountDebited': this._onBankAccountDebited
     };
   },
 
@@ -36,6 +38,12 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
     }));
   },
 
+  _debitBankAccount(command) {
+    this.record(new events.BankAccountDebited({
+      ...this._eventPropsFromCommand(command)
+    }));
+  },
+
   // ============= EVENT HANDLERS ============
 
   _onBankAccountOpened(event) {
@@ -45,6 +53,10 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 
   _onBankAccountCredited(event) {
     this.balance = new Money(this.balance + event.amount);
+  },
+
+  _onBankAccountDebited(event) {
+    this.balance = new Money(this.balance - event.amount);
   }
 
 });

@@ -74,5 +74,32 @@ describe('BankAccount', function() {
     });
   });
 
+  describe('debiting a bank account', function() {
+
+    it('publishes bank account debited event', function() {
+
+      Space.Application.test(BankAccount, ServerApp)
+        .given([
+          new commands.OpenBankAccount({
+            targetId: this.bankAccountId,
+            owner: this.newBankData.owner,
+            initialBalance: new Money(10, 'EUR')
+          })
+        ])
+        .when(
+          new commands.DebitBankAccount({
+            targetId: this.bankAccountId,
+            amount: new Money(5, 'EUR')
+          })
+        )
+        .expect([
+          new events.BankAccountDebited({
+            sourceId: this.bankAccountId,
+            amount: new Money(5, 'EUR')
+          })
+        ]);
+    });
+  });
+
 });
 

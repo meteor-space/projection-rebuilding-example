@@ -9,6 +9,10 @@ export default Space.messaging.define(Space.domain.Command, {
 
   CreditBankAccount: {
     amount: Money
+  },
+
+  DebitBankAccount: {
+    amount: Money
   }
 
 });
