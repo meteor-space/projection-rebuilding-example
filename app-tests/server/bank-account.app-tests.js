@@ -10,9 +10,9 @@ import DebitingBankAccountIsNotPossibleWithWrongCurrency from '/source/imports/a
 import CreditingBankAccountIsNotPossibleWithWrongCurrency from '/source/imports/application/domain-exceptions/domain-exceptions';
 import _ from 'lodash';
 
-describe('BankAccount', function () {
+describe('BankAccount', function() {
 
-  beforeEach(function () {
+  beforeEach(function() {
 
     this.bankAccountId = new Guid();
 
@@ -32,9 +32,9 @@ describe('BankAccount', function () {
 
   });
 
-  describe('opening a bank account', function () {
+  describe('opening a bank account', function() {
 
-    it('publishes bank account opened event', function () {
+    it('publishes bank account opened event', function() {
 
       Space.Application.test(BankAccount, ServerApp)
         .given()
@@ -94,8 +94,8 @@ describe('BankAccount', function () {
           })
         )
         .expect([
-          new DomainException({
-            thrower: BankAccount,
+          new Space.domain.Exception({
+            thrower: 'BankAccount',
             error: new CreditingBankAccountIsNotPossibleWithWrongCurrency(this.bankAccountId.toString(), 'HRK')
           })
         ]);
@@ -145,7 +145,7 @@ describe('BankAccount', function () {
         )
         .expect([
           new Space.domain.Exception({
-            thrower: BankAccount,
+            thrower: 'BankAccount',
             error: new DebitingBankAccountIsNotPossibleWithWrongCurrency(this.bankAccountId.toString(), 'HRK')
           })
         ]);
@@ -170,7 +170,7 @@ describe('BankAccount', function () {
         )
         .expect([
           new Space.domain.Exception({
-            thrower: BankAccount,
+            thrower: 'BankAccount',
             error: new BankAccountOverdrawn(this.bankAccountId.toString())
           })
         ]);
