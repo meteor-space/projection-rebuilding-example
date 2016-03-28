@@ -7,13 +7,13 @@ const state = (state) => {
   return {
     count: state.bankersCount
   };
-}
+};
 
 const actions = (dispatch) => {
   return {
     onIncrement: () => { dispatch( addBanker() ); },
     onDecrement: () => { dispatch( removeBanker() ); }
   }
-}
+};
 
 export default connect(state, actions)(Counter);
