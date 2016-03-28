@@ -6,5 +6,9 @@
   "space:event-sourcing": {
     "git":"https://github.com/meteor-space/event-sourcing.git",
     "version": "dee18c7acfc4c3dbb3b651f1385f285704158ecc"
+  },
+  "space:domain": {
+    "git":"https://github.com/meteor-space/domain.git",
+    "version": "f925b48f1e73824bf725c0a57da2cc0cbb6ab262"
   }
 }

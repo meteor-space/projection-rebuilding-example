@@ -83,6 +83,7 @@ standard-minifier-js@1.0.4-rc.7
 templating@1.1.7-rc.7
 templating-tools@1.0.2-rc.7
 test-helpers@1.0.7-rc.7
+test-in-console@1.0.9-rc.7
 tinytest@1.0.8-rc.7
 tmeasday:test-reporter-helpers@0.2.1
 tracker@1.0.11-rc.7
