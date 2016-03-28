@@ -1,0 +1,1 @@
+meteor test --port=4000 --full-app --driver-package practicalmeteor:mocha

@@ -4,12 +4,22 @@
   "description": "A demo application showcasing Meteor Space projection rebuilding for event-sourced systems",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test-app --driver-package practicalmeteor:mocha"
+  },
   "dependencies": {
+    "lodash": "^4.6.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-komposer": "^1.3.3",
     "react-mounter": "^1.1.0",
     "react-redux": "^4.4.1",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1"
+  },
+  "devDependencies": {
+    "spacejam": "git://github.com/practicalmeteor/spacejam.git#9af16ab1ceb0b3f4f773f9b21ad47a6390ffd664"
   }
 }
