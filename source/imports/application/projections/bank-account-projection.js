@@ -31,7 +31,7 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
   _onBankAccountDebited(event) {
     this.accounts.update(event.sourceId.toString(), {
       $inc: {
-        'balance.amount': - event.amount.amount
+        'balance.amount': -event.amount.amount
       }
     });
   }
