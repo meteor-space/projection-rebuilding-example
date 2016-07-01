@@ -4,7 +4,6 @@ import AppBar from 'material-ui/AppBar';
 import BankersCounter from '../containers/bankers-counter.jsx';
 import AccountTransactionsList from '../containers/account-transactions-list';
 import AccountsList from '../containers/accounts-list';
-import CustomTransaction from './custom-transaction';
 
 const Layout = () => (
   <div>
@@ -19,7 +18,6 @@ const Layout = () => (
           <AccountsList />
         </Col>
         <Col xs={6}>
-          <CustomTransaction />
         </Col>
       </Row>
     </Grid>
