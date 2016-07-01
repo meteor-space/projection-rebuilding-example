@@ -9,6 +9,8 @@
     "test": "meteor test-app --driver-package practicalmeteor:mocha"
   },
   "dependencies": {
+    "Faker": "^0.7.2",
+    "chance": "^1.0.3",
     "lodash": "^4.6.1",
     "material-ui": "^0.15.1",
     "mobx": "^2.3.3",

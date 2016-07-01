@@ -1,8 +1,10 @@
 import React from 'react';
+import AddBankingAccount from '../containers/add-banking-account';
 
 export default AccountsList = ({accounts}) => (
   <div>
-    <div><h1>Bank Accounts</h1></div>
+    <div><h1>Bank Accounts <AddBankingAccount/></h1></div>
+
     <ul>
       {accounts.map(({_id, balance}) => (
         <li key={_id}>{_id}: {balance.amount} {balance.currency.code}</li>
