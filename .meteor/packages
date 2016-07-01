@@ -35,3 +35,4 @@ test-in-console
 practicalmeteor:mocha-core@0.1.4
 practicalmeteor:mocha@2.1.1-rc.1
 practicalmeteor:chai
+jimmiebtlr:react-flexbox-grid
