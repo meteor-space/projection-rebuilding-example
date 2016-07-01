@@ -1,11 +1,21 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import bankers from './reducers/bankers';
+import accounts from './reducers/accounts';
 
-const logger = createLogger();
+const logger = createLogger({
+  collapsed: true
+});
 
 export default store = createStore(
-  bankers,
-  applyMiddleware(thunk, logger)
+  combineReducers(
+    {
+      bankers,
+      accounts
+    }
+  ),
+  compose(
+    applyMiddleware(thunk, logger)
+  )
 );
