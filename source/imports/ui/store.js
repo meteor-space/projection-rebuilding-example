@@ -16,6 +16,7 @@ export default store = createStore(
     }
   ),
   compose(
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk, logger),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
