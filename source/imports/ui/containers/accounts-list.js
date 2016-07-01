@@ -1,13 +1,15 @@
-import { composeWithTracker } from 'react-komposer';
+import React, { PropTypes } from 'react';
+import { observer } from 'mobx-react';
 import AccountsList from '../components/accounts-list.jsx';
-import * as Collections from '../../infrastructure/collections';
 
-function composer(props, onData) {
-  const handle = Meteor.subscribe('accounts');
-  if (handle.ready()) {
-    const accounts = Collections.BankAccounts.find({}, {sort: {_id: 1}}).fetch();
-    onData(null, {accounts});
+export default observer(React.createClass({
+
+  render() {
+    const state = store.getState();
+    const accounts = state.accounts.accountsList;
+    return (
+      <AccountsList accounts={accounts} />
+    );
   }
-}
 
-export default composeWithTracker(composer)(AccountsList);
+}));
