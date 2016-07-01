@@ -10,7 +10,6 @@ const Layout = () => (
 
     <AppBar title="Space Banking" showMenuIconButton={false}/>
 
-    <Grid>
       <Row>
         <Col xs={6}>
           <BankersCounter />
@@ -20,7 +19,6 @@ const Layout = () => (
         <Col xs={6}>
         </Col>
       </Row>
-    </Grid>
 
   </div>
 );

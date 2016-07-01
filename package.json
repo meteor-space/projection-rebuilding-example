@@ -11,6 +11,7 @@
   "dependencies": {
     "Faker": "^0.7.2",
     "chance": "^1.0.3",
+    "d3-format": "^1.0.0",
     "lodash": "^4.6.1",
     "material-ui": "^0.15.1",
     "mobx": "^2.3.3",

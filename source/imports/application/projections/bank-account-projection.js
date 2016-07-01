@@ -16,15 +16,16 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
     this.accounts.insert({
       _id: event.sourceId.toString(),
       creationDate: event.timestamp.toISOString(),
-      owner: event.owner.toData(),
-      balance: event.initialBalance.toData()
+      ownerName: event.owner.name,
+      ownerEmail: event.owner.email.toString(),
+      balance: event.initialBalance.amount
     });
   },
 
   _onBankAccountCredited(event) {
     this.accounts.update(event.sourceId.toString(), {
       $inc: {
-        'balance.amount': event.amount.amount
+        'balance': event.amount.amount
       }
     });
   },
@@ -32,7 +33,7 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
   _onBankAccountDebited(event) {
     this.accounts.update(event.sourceId.toString(), {
       $inc: {
-        'balance.amount': -event.amount.amount
+        'balance': -event.amount.amount
       }
     });
   }
