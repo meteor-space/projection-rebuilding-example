@@ -1,3 +1,3 @@
-import ServerApp from '/source/imports/application/server-application.js';
+import ServerApp from '../imports/application/server-application.js';
 
 ServerApp.start();

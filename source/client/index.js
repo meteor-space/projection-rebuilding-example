@@ -1,2 +1,2 @@
-import App from '/source/imports/ui/application.js';
+import App from '../imports/ui/application.js';
 App.start();
