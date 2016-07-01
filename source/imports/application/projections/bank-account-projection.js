@@ -15,6 +15,7 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
   _onBankAccountOpened(event) {
     this.accounts.insert({
       _id: event.sourceId.toString(),
+      creationDate: event.timestamp.toISOString(),
       owner: event.owner.toData(),
       balance: event.initialBalance.toData()
     });
