@@ -32,17 +32,6 @@ const ServerApp = Space.Application.extend('BankApplication', {
   onReset() {
     this.injector.get('BankAccountTransactions').remove({});
     this.injector.get('BankAccounts').remove({});
-  },
-
-  onStart() {
-    this.rebuildAllProjections();
-  },
-
-  rebuildAllProjections() {
-    this.injector.get('Space.eventSourcing.ProjectionRebuilder').rebuild([
-      'BankAccountProjection',
-      'TransactionsProjection'
-    ]);
   }
 
 });
