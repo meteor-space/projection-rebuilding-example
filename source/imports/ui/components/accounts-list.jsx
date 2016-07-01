@@ -1,5 +1,6 @@
 import React from 'react';
 import AddBankingAccount from '../containers/add-banking-account';
+import RebuildAccountsButton from '../containers/rebuild-accounts-button';
 import { Card, CardHeader, CardMedia } from 'material-ui/Card';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import f from 'd3-format';
@@ -8,7 +9,8 @@ export default AccountsList = ({accounts}) => (
 
   <Card>
     <CardHeader title="Bank Accounts" subtitle="Press + button to add random bank accounts">
-      <div style={{float: 'right'}}><AddBankingAccount/></div>
+      <div style={{float: 'right', marginLeft: '10px'}}><AddBankingAccount/></div>
+      <div style={{float: 'right'}}><RebuildAccountsButton/></div>
     </CardHeader>
 
     <CardMedia>

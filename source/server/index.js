@@ -1,3 +1,8 @@
 import ServerApp from '../imports/application/server-application.js';
 
-ServerApp.start();
+Meteor.startup(function() {
+
+  if (Meteor.isServer) {
+    ServerApp.start();
+  }
+});

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Card, CardHeader, CardMedia } from 'material-ui/Card';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import RebuildTransactionsButton from '../containers/rebuild-transactions-button';
 import f from 'd3-format';
 import moment from 'moment';
 
@@ -9,7 +10,9 @@ const TransactionList = ({transactions}) => (
   <Card>
     <CardHeader title="Transactions"
                 subtitle="Projections of all transactions sorted by date"
-    />
+    >
+      <div style={{float: 'right'}}><RebuildTransactionsButton/></div>
+    </CardHeader>
 
     <CardMedia>
       <Table>
