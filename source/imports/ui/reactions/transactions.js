@@ -6,8 +6,8 @@ export default () => {
 
   const state = store.getState();
 
-  // ALL BANK ACCOUNTS
-  Meteor.subscribe('accounts');
-  state.accounts.accountsList = Collections.BankAccounts.find({}, {sort: {creationDate: 1}}).fetch();
+  // ALL TRANSACTIONS
+  Meteor.subscribe('transactions');
+  state.transactions.transactionList = Collections.BankAccountTransactions.find({}, {sort: {timestamp: -1}}).fetch();
 
 };

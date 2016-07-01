@@ -1,14 +1,14 @@
 export default Space.messaging.Publication.extend('AccountPublications', {
 
   dependencies: {
-    accountTransactions: 'BankAccountTransactions',
+    transactions: 'BankAccountTransactions',
     accounts: 'BankAccounts'
   },
 
   publications() {
     return [{
-      'account_transactions': () => {
-        return this.accountTransactions.find();
+      'transactions': () => {
+        return this.transactions.find();
       },
       'accounts': () => {
         return this.accounts.find();
