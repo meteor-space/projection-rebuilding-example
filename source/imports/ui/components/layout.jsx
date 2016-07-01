@@ -1,23 +1,21 @@
 import React from 'react';
 import {Grid, Row, Col} from 'meteor/jimmiebtlr:react-flexbox-grid';
 import AppBar from 'material-ui/AppBar';
-import BankersCounter from '../containers/bankers-counter.jsx';
 import AccountsList from '../containers/accounts-list';
 import TransactionList from '../containers/transaction-list';
-import RandomTransaction from '../containers/random-transaction';
+import Simulations from '../components/simulations';
 
 const Layout = () => (
   <div>
 
-    <AppBar title="Space Banking" showMenuIconButton={false}/>
+    <AppBar title="Space Banking" showMenuIconButton={false} style={{marginBottom: '20px'}}/>
 
       <Row>
         <Col xs={6}>
-          <BankersCounter />
+          <Simulations />
           <AccountsList />
         </Col>
         <Col xs={6}>
-          <RandomTransaction/>
           <TransactionList />
         </Col>
       </Row>
