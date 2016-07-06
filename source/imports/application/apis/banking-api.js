@@ -1,3 +1,5 @@
+import * as Collections from '../../infrastructure/collections';
+
 import { OpenBankAccount, CreditBankAccount, DebitBankAccount } from '../../domain/commands';
 
 const BankingApi = Space.messaging.Api.extend('BankingApi', {
@@ -13,7 +15,8 @@ const BankingApi = Space.messaging.Api.extend('BankingApi', {
       CreditBankAccount: this._creditBankAccount,
       DebitBankAccount: this._debitBankAccount,
       'rebuildAccountsProjection': this._rebuildAccountsProjection,
-      'rebuildTransactionsProjection': this._rebuildTransactionsProjection
+      'rebuildTransactionsProjection': this._rebuildTransactionsProjection,
+      'getNumberOfAccounts': this._getNumberOfAccounts
     }];
   },
 
@@ -54,6 +57,12 @@ const BankingApi = Space.messaging.Api.extend('BankingApi', {
       context.unblock();
       Space.log.info(`TransactionsProjection projection rebuilding started.`);
       Space.log.info(this.injector.get('Space.eventSourcing.ProjectionRebuilder').rebuild([ 'TransactionsProjection' ]));
+    }
+  },
+
+  _getNumberOfAccounts(context) {
+    if (!context.isSimulation) {
+      return Collections.BankAccounts.find({}).count();
     }
   }
 
