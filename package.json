@@ -9,7 +9,6 @@
     "test": "meteor test-app --driver-package practicalmeteor:mocha"
   },
   "dependencies": {
-    "Faker": "^0.7.2",
     "chance": "^1.0.3",
     "d3-format": "^1.0.0",
     "lodash": "^4.6.1",
