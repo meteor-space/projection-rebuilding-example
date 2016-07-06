@@ -1,4 +1,4 @@
-import BankAccount from '../../domain/bank-account';
+import BankAccount from '../../domain/event-sourceables/bank-account';
 import commands from '../../domain/commands';
 
 const BankAccountRouter = Space.eventSourcing.Router.extend('BankAccountRouter', {

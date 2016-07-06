@@ -1,10 +1,10 @@
-import Contact from './value-objects/contact';
-import events from './events';
-import { BankAccountOpened, BankAccountCredited, BankAccountDebited } from './events';
-import { OpenBankAccount, CreditBankAccount, DebitBankAccount } from './commands';
-import BankAccountOverdrawn from '../application/domain-exceptions/domain-exceptions';
-import DebitingBankAccountIsNotPossibleWithWrongCurrency from '../application/domain-exceptions/domain-exceptions';
-import CreditingBankAccountIsNotPossibleWithWrongCurrency from '../application/domain-exceptions/domain-exceptions';
+import Contact from '../value-objects/contact';
+import events from '../events';
+import { BankAccountOpened, BankAccountCredited, BankAccountDebited } from '../events';
+import { OpenBankAccount, CreditBankAccount, DebitBankAccount } from '../commands';
+import BankAccountOverdrawn from '../domain-exceptions';
+import DebitingBankAccountIsNotPossibleWithWrongCurrency from '../domain-exceptions';
+import CreditingBankAccountIsNotPossibleWithWrongCurrency from '../domain-exceptions';
 
 const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 

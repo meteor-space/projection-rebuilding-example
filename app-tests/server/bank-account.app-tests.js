@@ -1,12 +1,12 @@
-import BankAccount from '/source/imports/domain/bank-account';
-import commands from '/source/imports/domain/commands';
-import events from '/source/imports/domain/events';
-import Contact from '/source/imports/domain/value-objects/contact';
-import NIN from '/source/imports/domain/value-objects/nin';
-import ServerApp from '/source/imports/application/server-application.js';
-import BankAccountOverdrawn from '/source/imports/application/domain-exceptions/domain-exceptions';
-import DebitingBankAccountIsNotPossibleWithWrongCurrency from '/source/imports/application/domain-exceptions/domain-exceptions';
-import CreditingBankAccountIsNotPossibleWithWrongCurrency from '/source/imports/application/domain-exceptions/domain-exceptions';
+import BankAccount from '../../source/imports/domain/event-sourceables/bank-account';
+import commands from '../../source/imports/domain/commands';
+import events from '../../source/imports/domain/events';
+import Contact from '../../source/imports/domain/value-objects/contact';
+import NIN from '../../source/imports/domain/value-objects/nin';
+import ServerApp from '../../source/imports/application/server-application.js';
+import BankAccountOverdrawn from '../../source/imports/domain/domain-exceptions';
+import DebitingBankAccountIsNotPossibleWithWrongCurrency from '../../source/imports/domain/domain-exceptions';
+import CreditingBankAccountIsNotPossibleWithWrongCurrency from '../../source/imports/domain/domain-exceptions';
 import _ from 'lodash';
 
 describe('BankAccount', function() {
