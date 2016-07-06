@@ -1,4 +1,5 @@
 import * as Collections from '../../infrastructure/collections';
+import { BankAccountCredited, BankAccountDebited } from '../../domain/events';
 
 const TransactionsProjection = Space.eventSourcing.Projection.extend('TransactionsProjection', {
 
@@ -8,8 +9,8 @@ const TransactionsProjection = Space.eventSourcing.Projection.extend('Transactio
 
   eventSubscriptions() {
     return [{
-      'BankAccountCredited': this._onBankAccountCredited,
-      'BankAccountDebited': this._onBankAccountDebited
+      BankAccountCredited: this._onBankAccountCredited,
+      BankAccountDebited: this._onBankAccountDebited
     }];
   },
 
