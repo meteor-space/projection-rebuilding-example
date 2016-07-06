@@ -1,6 +1,6 @@
 import * as Collections from '../infrastructure/collections';
 import AccountPublications from './publications/account-publications';
-import BankAccountRouter from '../infrastructure/bank-account-router';
+import BankAccountRouter from './command-handlers/bank-account-router';
 import TransactionsProjection from './projections/transactions-projection';
 import BankAccountProjection from './projections/bank-account-projection';
 import BankingApi from '../../imports/application/apis/banking-api';
