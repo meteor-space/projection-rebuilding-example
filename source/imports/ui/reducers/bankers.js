@@ -2,7 +2,7 @@ import { assign } from 'lodash';
 import { observable } from 'mobx';
 
 export const bankers = observable({
-  bankersCount: 0
+  bankersCount: 1
 });
 
 export default (state, {data, type}) => {
