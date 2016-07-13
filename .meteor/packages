@@ -27,7 +27,7 @@ space:vo-monetary
 space:vo-user
 space:testing
 space:testing-messaging
-space:testing-event-sourcing
+space:testing-event-sourcing@3.1.0
 
 # testing
 test-in-console
