@@ -20,8 +20,4 @@ const App = (store) => (
   </Provider>
 );
 
-FlowRouter.route('/', {
-  action() {
-    mount(App, store);
-  }
-});
+mount(App, store);

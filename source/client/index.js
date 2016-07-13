@@ -1,2 +1,7 @@
 import App from '../imports/ui/application.js';
-App.start();
+
+Meteor.startup(function() {
+  if (Meteor.isClient) {
+    App.start();
+  }
+});
