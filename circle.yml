@@ -5,7 +5,7 @@ machine:
     - curl https://install.meteor.com | /bin/sh
 dependencies:
   pre:
-    - npm install -g spacejam.git
+    - npm install -g spacejam
     - meteor npm install
     override:
         - mgp
