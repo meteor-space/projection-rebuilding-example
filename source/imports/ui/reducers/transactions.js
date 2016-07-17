@@ -8,6 +8,9 @@ export const transactions = observable({
 export default (state, {data, type}) => {
   switch (type) {
 
+    case 'TRANSACTIONS_INFORMATION_CHANGED':
+      return assign(transactions, { transactionList: data });
+
     default:
       return transactions;
 

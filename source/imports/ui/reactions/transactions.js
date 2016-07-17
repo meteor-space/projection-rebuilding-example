@@ -5,9 +5,14 @@ import { Meteor } from 'meteor/meteor';
 export default () => {
 
   const state = store.getState();
+  const dispatch = store.dispatch;
 
   // ALL TRANSACTIONS
   Meteor.subscribe('transactions');
-  state.transactions.transactionList = Collections.BankAccountTransactions.find({}, {sort: {timestamp: -1}}).fetch();
+  const transactions = Collections.BankAccountTransactions.find({}, {sort: {timestamp: -1}}).fetch();
+  dispatch({
+    type: 'TRANSACTIONS_INFORMATION_CHANGED',
+    data: transactions
+  });
 
 };

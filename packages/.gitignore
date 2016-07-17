@@ -1,5 +1,5 @@
-space-messaging
 space-event-sourcing
 space-testing
-space-domain
 space-reaction
+space-domain
+space-messaging

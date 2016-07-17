@@ -8,6 +8,9 @@ export const accounts = observable({
 export default (state, {data, type}) => {
   switch (type) {
 
+    case 'ACCOUNTS_INFORMATION_CHANGED':
+      return assign(accounts, { accountsList: data });
+
     default:
       return accounts;
 
