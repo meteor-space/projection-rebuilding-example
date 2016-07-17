@@ -7,6 +7,10 @@
     "git":"https://github.com/meteor-space/testing.git",
     "version": "9f5d1aca3e5527fcb057e7d7905c321d8429f7a0"
   },
+  "space:reaction": {
+    "git":"https://github.com/meteor-space/reaction.git",
+    "version": "38ab2602f4980f6191a30ada030a07ab8934c452"
+  },
   "space:domain": {
     "git":"https://github.com/meteor-space/domain.git",
     "version": "f925b48f1e73824bf725c0a57da2cc0cbb6ab262"
