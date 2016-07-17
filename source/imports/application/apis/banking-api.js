@@ -47,16 +47,16 @@ const BankingApi = Space.messaging.Api.extend('BankingApi', {
   _rebuildAccountsProjection(context) {
     if (!context.isSimulation) {
       context.unblock();
-      Space.log.info(`BankAccountProjection projection rebuilding started.`);
-      Space.log.info(this.injector.get('Space.eventSourcing.ProjectionRebuilder').rebuild([ 'BankAccountProjection' ]));
+      this.log.info(`BankAccountProjection projection rebuilding started.`);
+      this.log.info(this.injector.get('Space.eventSourcing.ProjectionRebuilder').rebuild([ 'BankAccountProjection' ]));
     }
   },
 
   _rebuildTransactionsProjection(context) {
     if (!context.isSimulation) {
       context.unblock();
-      Space.log.info(`TransactionsProjection projection rebuilding started.`);
-      Space.log.info(this.injector.get('Space.eventSourcing.ProjectionRebuilder').rebuild([ 'TransactionsProjection' ]));
+      this.log.info(`TransactionsProjection projection rebuilding started.`);
+      this.log.info(this.injector.get('Space.eventSourcing.ProjectionRebuilder').rebuild([ 'TransactionsProjection' ]));
     }
   },
 
