@@ -1,6 +1,6 @@
 import * as Collections from '../infrastructure/collections';
 import BankingApi from '../../imports/application/apis/banking-api';
-import reaction from './lib/reaction';
+import reaction from 'meteor/space:reaction';
 import accounts from './reactions/accounts';
 import transactions from './reactions/transactions';
 

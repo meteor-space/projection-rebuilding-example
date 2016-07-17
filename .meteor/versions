@@ -69,6 +69,7 @@ space:base@4.1.3
 space:domain@0.2.1
 space:event-sourcing@3.0.1
 space:messaging@3.2.0
+space:reaction@0.1.0
 space:testing@3.0.2
 space:testing-event-sourcing@3.1.0
 space:testing-messaging@3.0.1
@@ -84,6 +85,7 @@ templating-tools@1.0.4
 test-helpers@1.0.10
 test-in-console@1.0.12
 tinytest@1.0.11
+tmeasday:check-npm-versions@0.1.1
 tmeasday:test-reporter-helpers@0.2.1
 tracker@1.0.14
 ui@1.0.11
