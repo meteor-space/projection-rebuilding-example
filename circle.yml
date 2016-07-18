@@ -7,9 +7,8 @@ dependencies:
   pre:
     - npm install -g spacejam
     - meteor npm install
-
     override:
-        - mgp
+      - mgp
 test:
   override:
     - spacejam test --full-app --driver-package practicalmeteor:mocha
