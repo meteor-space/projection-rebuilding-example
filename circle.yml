@@ -7,6 +7,7 @@ dependencies:
   pre:
     - npm install -g spacejam
     - meteor npm install
+
     override:
         - mgp
 test:
