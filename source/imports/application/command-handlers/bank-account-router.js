@@ -1,14 +1,16 @@
 import BankAccount from '../../domain/event-sourceables/bank-account';
 import commands from '../../domain/commands';
 
+const { OpenBankAccount, CreditBankAccount, DebitBankAccount } = commands;
+
 const BankAccountRouter = Space.eventSourcing.Router.extend('BankAccountRouter', {
 
   eventSourceable: BankAccount,
-  initializingMessage: commands.OpenBankAccount,
+  initializingMessage: OpenBankAccount,
 
   routeCommands: [
-    commands.CreditBankAccount,
-    commands.DebitBankAccount
+    CreditBankAccount,
+    DebitBankAccount
   ]
 
 });

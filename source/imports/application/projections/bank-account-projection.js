@@ -1,4 +1,6 @@
-import { BankAccountOpened, BankAccountCredited, BankAccountDebited } from '../../domain/events';
+import events from '../../domain/events';
+
+const { BankAccountOpened, BankAccountCredited, BankAccountDebited } = events;
 
 const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccountProjection', {
 
@@ -8,9 +10,9 @@ const BankAccountProjection = Space.eventSourcing.Projection.extend('BankAccount
 
   eventSubscriptions() {
     return [{
-      BankAccountOpened: this._onBankAccountOpened,
-      BankAccountCredited: this._onBankAccountCredited,
-      BankAccountDebited: this._onBankAccountDebited
+      [BankAccountOpened]: this._onBankAccountOpened,
+      [BankAccountCredited]: this._onBankAccountCredited,
+      [BankAccountDebited]: this._onBankAccountDebited
     }];
   },
 

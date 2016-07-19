@@ -1,6 +1,7 @@
 import * as Collections from '../../infrastructure/collections';
+import commands from '../../domain/commands';
 
-import { OpenBankAccount, CreditBankAccount, DebitBankAccount } from '../../domain/commands';
+const { OpenBankAccount, CreditBankAccount, DebitBankAccount } = commands;
 
 const BankingApi = Space.messaging.Api.extend('BankingApi', {
 
@@ -11,9 +12,9 @@ const BankingApi = Space.messaging.Api.extend('BankingApi', {
 
   methods() {
     return [{
-      OpenBankAccount: this._openBankAccount,
-      CreditBankAccount: this._creditBankAccount,
-      DebitBankAccount: this._debitBankAccount,
+      [OpenBankAccount]: this._openBankAccount,
+      [CreditBankAccount]: this._creditBankAccount,
+      [DebitBankAccount]: this._debitBankAccount,
       'rebuildAccountsProjection': this._rebuildAccountsProjection,
       'rebuildTransactionsProjection': this._rebuildTransactionsProjection,
       'getNumberOfAccounts': this._getNumberOfAccounts

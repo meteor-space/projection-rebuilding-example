@@ -1,10 +1,12 @@
 import Contact from '../value-objects/contact';
 import events from '../events';
-import { BankAccountOpened, BankAccountCredited, BankAccountDebited } from '../events';
-import { OpenBankAccount, CreditBankAccount, DebitBankAccount } from '../commands';
+import commands from '../commands';
 import BankAccountOverdrawn from '../domain-exceptions';
 import DebitingBankAccountIsNotPossibleWithWrongCurrency from '../domain-exceptions';
 import CreditingBankAccountIsNotPossibleWithWrongCurrency from '../domain-exceptions';
+
+const { BankAccountOpened, BankAccountCredited, BankAccountDebited } = events;
+const { OpenBankAccount, CreditBankAccount, DebitBankAccount } = commands;
 
 const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 
@@ -17,17 +19,17 @@ const BankAccount = Space.eventSourcing.Aggregate.extend('BankAccount', {
 
   commandMap() {
     return {
-      OpenBankAccount: this._openBankAccount,
-      CreditBankAccount: this._creditBankAccount,
-      DebitBankAccount: this._debitBankAccount
+      [OpenBankAccount]: this._openBankAccount,
+      [CreditBankAccount]: this._creditBankAccount,
+      [DebitBankAccount]: this._debitBankAccount
     };
   },
 
   eventMap() {
     return {
-      BankAccountOpened: this._onBankAccountOpened,
-      BankAccountCredited: this._onBankAccountCredited,
-      BankAccountDebited: this._onBankAccountDebited
+      [BankAccountOpened]: this._onBankAccountOpened,
+      [BankAccountCredited]: this._onBankAccountCredited,
+      [BankAccountDebited]: this._onBankAccountDebited
     };
   },
 

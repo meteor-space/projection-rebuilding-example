@@ -4,13 +4,15 @@ import Contact from '../../domain/value-objects/contact';
 import NIN from '../../domain/value-objects/nin';
 import Chance from 'chance';
 
+const { OpenBankAccount } = commands;
+
 export const addBankAccount = () => {
 
   return dispatch => {
 
     const chance = new Chance();
 
-    const command = new commands.OpenBankAccount({
+    const command = new OpenBankAccount({
       targetId: new Guid(),
       owner: new Contact({
         name: chance.name(),
