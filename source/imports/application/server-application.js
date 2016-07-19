@@ -1,5 +1,5 @@
 import * as Collections from '../infrastructure/collections';
-import AccountPublications from './publications/account-publications';
+import BankingPublications from './publications/banking-publications';
 import BankAccountRouter from './command-handlers/bank-account-router';
 import TransactionsProjection from './projections/transactions-projection';
 import BankAccountProjection from './projections/bank-account-projection';
@@ -17,7 +17,7 @@ const ServerApp = Space.Application.extend('BankApplication', {
   ],
 
   singletons: [
-    AccountPublications,
+    BankingPublications,
     BankAccountRouter,
     BankAccountProjection,
     TransactionsProjection,
