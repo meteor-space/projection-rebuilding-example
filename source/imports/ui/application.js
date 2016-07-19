@@ -1,6 +1,6 @@
 import * as Collections from '../infrastructure/collections';
 import BankingApi from '../../imports/application/apis/banking-api';
-import reaction from 'meteor/space:reaction';
+import autorun from 'meteor/space:tracker-mobx-autorun';
 import accounts from './reactions/accounts';
 import transactions from './reactions/transactions';
 
@@ -21,8 +21,8 @@ const ClientApp = Space.Application.extend('BankApplication', {
 
   onStart() {
     // Start reactions
-    reaction(accounts).start();
-    reaction(transactions).start();
+    autorun(accounts).start();
+    autorun(transactions).start();
   }
 
 });

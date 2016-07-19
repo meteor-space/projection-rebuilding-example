@@ -7,8 +7,8 @@
     "git":"https://github.com/meteor-space/testing.git",
     "version": "9f5d1aca3e5527fcb057e7d7905c321d8429f7a0"
   },
-  "space:reaction": {
-    "git":"https://github.com/meteor-space/reaction.git",
+  "space:tracker-mobx-autorun": {
+    "git":"https://github.com/meteor-space/tracker-mobx-autorun.git",
     "version": "38ab2602f4980f6191a30ada030a07ab8934c452"
   },
   "space:domain": {
@@ -18,5 +18,9 @@
   "space:messaging": {
     "git":"https://github.com/meteor-space/messaging.git",
     "version": "fdf35e2eeea533e2582e880c77f1fafd45b350c7"
+  },
+  "space:base": {
+    "git":"https://github.com/meteor-space/base.git",
+    "version": "2bcda25a7bbef1b70256c8cf2bd6f72bf34171d9"
   }
 }

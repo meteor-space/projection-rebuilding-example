@@ -27,7 +27,7 @@ space:vo-user
 space:testing
 space:testing-messaging
 space:testing-event-sourcing@3.1.0
-space:reaction@0.1.0
+space:tracker-mobx-autorun@0.1.0
 
 # testing
 test-in-console
