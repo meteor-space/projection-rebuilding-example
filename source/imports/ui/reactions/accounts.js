@@ -1,18 +1,12 @@
 import store from '../store';
 import * as Collections from '../../infrastructure/collections';
 import { Meteor } from 'meteor/meteor';
+import { action } from 'mobx';
 
-export default () => {
-
-  const state = store.getState();
-  const dispatch = store.dispatch;
+export default action('accountsAutorun', () => {
 
   // ALL BANK ACCOUNTS
   Meteor.subscribe('accounts');
-  const accounts = Collections.BankAccounts.find({}, {sort: {creationDate: 1}}).fetch();
-  dispatch({
-    type: 'ACCOUNTS_INFORMATION_CHANGED',
-    data: accounts
-  });
+  store.allAccounts = Collections.BankAccounts.find({}, {sort: {creationDate: 1}}).fetch();
 
-};
+});

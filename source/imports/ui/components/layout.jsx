@@ -4,6 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import AccountsList from '../containers/accounts-list';
 import TransactionList from '../containers/transaction-list';
 import Simulations from '../components/simulations';
+import DevTools from 'mobx-react-devtools';
 
 const Layout = () => (
   <div>
@@ -19,7 +20,7 @@ const Layout = () => (
           <TransactionList />
         </Col>
       </Row>
-
+    <DevTools />
   </div>
 );
 

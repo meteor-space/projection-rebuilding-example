@@ -1,17 +1,14 @@
 import store from '../store';
+import { action } from 'mobx';
 
 export const addBanker = () => {
-  return dispatch => {
-    store.dispatch({
-      type: 'ADD_BANKER'
-    });
-  };
+  return action('addBanker', () => {
+    store.bankersCount++;
+  });
 };
 
-export const removeBanker = () => {
-  return dispatch => {
-    store.dispatch({
-      type: 'REMOVE_BANKER'
-    });
-  };
-};
+export const removeBanker = action('removeBanker', () => {
+  return action('addBanker', () => {
+    store.bankersCount > 0 && store.bankersCount--;
+  });
+});

@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { observer } from 'mobx-react';
 import CountdownTimer from '../components/countdown-timer';
 import { generateRandomTransaction } from '../actions/transactions';
+import store from '../store';
 
 class RandomTransaction extends Component {
 
   render() {
-    const state = store.getState();
-    const numberOfSimulations = state.bankers.bankersCount;
+    const numberOfSimulations = store.bankersCount;
     return (
       <div style={{margin: '20px'}}>
         {Array(numberOfSimulations).fill(1).map((el, i) =>

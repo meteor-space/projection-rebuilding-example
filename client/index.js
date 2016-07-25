@@ -1,10 +1,11 @@
 import React from 'react';
 import { mount } from 'react-mounter';
-import { Provider } from 'react-redux';
 import Layout from '../source/imports/ui/components/layout.jsx';
-import store from '../source/imports/ui/store';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { useStrict } from 'mobx';
+
+useStrict(true);
 
 const AppbarStyles = getMuiTheme({
   palette: {
@@ -12,12 +13,10 @@ const AppbarStyles = getMuiTheme({
   }
 });
 
-const App = (store) => (
-  <Provider store={store}>
-    <MuiThemeProvider muiTheme={AppbarStyles}>
-      <Layout />
-    </MuiThemeProvider>
-  </Provider>
+const App = () => (
+  <MuiThemeProvider muiTheme={AppbarStyles}>
+    <Layout />
+  </MuiThemeProvider>
 );
 
-mount(App, store);
+mount(App);
