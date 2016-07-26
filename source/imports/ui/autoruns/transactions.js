@@ -3,10 +3,12 @@ import * as Collections from '../../infrastructure/collections';
 import { Meteor } from 'meteor/meteor';
 import { action } from 'mobx';
 
-export default action('transactionsAutorun', () => {
+export default () => {
 
   // ALL TRANSACTIONS
   Meteor.subscribe('transactions');
-  store.allTransactions = Collections.BankAccountTransactions.find({}, {sort: {timestamp: -1}}).fetch();
+  action('updateTransactionsFromAutorun', (transactions) => {
+    store.allTransactions = transactions;
+  })(Collections.BankAccountTransactions.find({}, {sort: {timestamp: -1}}).fetch());
 
-});
+};
