@@ -9,7 +9,7 @@
   },
   "space:tracker-mobx-autorun": {
     "git":"https://github.com/meteor-space/tracker-mobx-autorun.git",
-    "version": "38ab2602f4980f6191a30ada030a07ab8934c452"
+    "version": "e99eb0894b640df449ead0484a38787732842594"
   },
   "space:domain": {
     "git":"https://github.com/meteor-space/domain.git",

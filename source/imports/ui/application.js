@@ -1,8 +1,8 @@
 import * as Collections from '../infrastructure/collections';
 import BankingApi from '../../imports/application/apis/banking-api';
 import autorun from 'meteor/space:tracker-mobx-autorun';
-import accounts from './reactions/accounts';
-import transactions from './reactions/transactions';
+import accounts from './autoruns/accounts';
+import transactions from './autoruns/transactions';
 
 const ClientApp = Space.Application.extend('BankApplication', {
 

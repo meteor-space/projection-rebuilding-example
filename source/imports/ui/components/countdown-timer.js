@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import LinearProgress from 'material-ui/LinearProgress';
-import store from '../store';
 
 class CountdownTimer extends Component {
 
@@ -17,7 +16,7 @@ class CountdownTimer extends Component {
     this.setState({secondsRemaining: this.state.secondsRemaining - 1});
     if (this.state.secondsRemaining <= 0) {
       clearInterval(this.interval);
-      store.dispatch(this.props.onCountdownDone());
+      this.props.onCountdownDone();
       const randomNumberOfSeconds = Math.floor(Math.random() * 10) + 1;
       this.setState({secondsRemaining: randomNumberOfSeconds});
       this.setState({initialSeconds: randomNumberOfSeconds});

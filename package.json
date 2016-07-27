@@ -16,14 +16,11 @@
     "mobx": "^2.3.3",
     "mobx-react": "^3.4.0",
     "moment": "^2.13.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "react-mounter": "^1.1.0",
-    "react-redux": "^4.4.1",
-    "redux": "^3.3.1",
-    "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.0.1"
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-mounter": "^1.1.0"
   },
   "devDependencies": {
+    "mobx-react-devtools": "^4.2.3"
   }
 }

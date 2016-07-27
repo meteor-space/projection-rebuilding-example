@@ -11,15 +11,14 @@ export default observer(React.createClass({
         console.log(err);
       } else {
         if (res === 0) {
-          store.dispatch(addBankAccount());
+          addBankAccount();
         }
       }
     });
   },
 
   render() {
-    const state = store.getState();
-    const accounts = state.accounts.accountsList;
+    const accounts = store.allAccounts;
     return (
       <AccountsList accounts={accounts} />
     );
