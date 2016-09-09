@@ -18,7 +18,8 @@
     "moment": "^2.13.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-mounter": "^1.1.0"
+    "react-mounter": "^1.1.0",
+    "react-tap-event-plugin": "^1.0.0"
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.11.5",
